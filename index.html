@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>Controle de gastos</title>
+    <title>Login - Controle de gastos</title>
 </head>
 
 <body>
@@ -22,10 +22,10 @@
             <button type="button" class="clear" id="recover-password-button" disabled="true">Recuperar senha</button>
         </div>
         <div>
-            <button type="button" class="solid" id="login-button" disabled="true">Entrar</button>
+            <button type="button" class="solid" id="login-button" disabled="true" onclick="login()">Entrar</button>
         </div>
         <div>
-            <button type="button" class="outline">Registrar</button>
+            <button type="button" class="outline" onclick="register()">Registrar</button>
         </div>
     </form>
 </body>
@@ -33,5 +33,27 @@
 <link rel="stylesheet" href="index.css">
 
 <script src="index.js"></script>
+<script src="validations.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-auth-compat.js"></script>
 
+<script>
+     // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAD5ZShUWaJb6opHELOikYRjpvQtahGSwY",
+    authDomain: "controle-de-gastos-4c953.firebaseapp.com",
+    projectId: "controle-de-gastos-4c953",
+    storageBucket: "controle-de-gastos-4c953.firebasestorage.app",
+    messagingSenderId: "728892738526",
+    appId: "1:728892738526:web:2af652e7eaac2d7643eb4f"
+  };
+  firebase.initializeApp(firebaseConfig);
+  console.log('antes');
+  firebase.auth().signInWithEmailAndPassword('luidemendesrios@gmail.com','123456').then(response =>{
+    console.log('sucess',response);
+  }).catch(error =>{
+    console.log('error',error);
+  });
+  console.log('depois');
+</script>
 </html>
