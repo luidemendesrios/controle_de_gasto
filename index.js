@@ -6,7 +6,31 @@ function onChangeEmail() {
 function onChangePassword() {
     toggleButtonsDisable();
     togglePasswordErrors();
-} 
+}
+
+function login() {
+    showLoading();
+    firebase.auth().signInWithEmailAndPassword(
+        form.email().value, form.password().value
+    ).then(() => {
+        hideLoading();
+        window.location.href = "pages/home/home.html";
+    }).catch(error => {
+        hideLoading();
+        alert(getErrorMessage(error));
+    });
+}
+
+function getErrorMessage(error) {
+    if (error.code == "auth/user-not-found") {
+        return "Usuário nao encontrado";
+    }
+    return error.message;
+}
+
+function register() {
+    window.location.href = "pages/register/register.html";
+}
 
 function toggleEmailErrors() {
     const email = form.email().value;
@@ -49,11 +73,3 @@ const form = {
     passwordRequiredError: () => document.getElementById("password-required-error"),
     recoverPasswordButton: () => document.getElementById("recover-password-button"),
 } 
-
-function login(){
-    window.location.href="pages/homer/home.html";
-}
-
-function register(){
-    window.location.href="pages/register/register.html";
-}
