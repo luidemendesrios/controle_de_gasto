@@ -7,20 +7,20 @@
 </head>
 
 <body class="centralize">
-    <form>
+    <form id="demo-form">
         <div class="form-field">
             <div><label>Email</label></div>
             <input type="email" name="email" id="email" placeholder="seu@email.com" onchange="onChangeEmail()"/>
             <div class="error" id="email-required-error">Email é obrigatório</div>
             <div class="error" id="email-invalid-error">Email é inválido</div>
         </div>
-        <div class="form-field">
+       <div class="form-field">
             <div><label>Senha</label></div>
             <input type="password" name="password" id="password" placeholder="Senha" onchange="onChangePassword()"/>
             <div class="error" id="password-required-error">Senha é obrigatória</div>
         </div>
-        <div>
-            <button type="button" class="clear" id="recover-password-button" disabled="true">Recuperar senha</button>
+        <div> 
+            <button type="button" class="clear" id="recover-password-button" disabled="true" onclick="recoverPassword()">Recuperar senha</button>
         </div>
         <div>
             <button type="button" class="solid" id="login-button" disabled="true" onclick="login()">Entrar</button>
@@ -28,6 +28,7 @@
         <div>
             <button type="button" class="outline" onclick="register()">Registrar</button>
         </div>
+     
     </form>
 </body>
 
@@ -40,6 +41,7 @@
 
 <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+
 
 <script>
      // Your web app's Firebase configuration
@@ -54,4 +56,5 @@
   firebase.initializeApp(firebaseConfig);
   
 </script>
+
 </html>

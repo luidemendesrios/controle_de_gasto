@@ -21,12 +21,28 @@ function login() {
     });
 }
 
+function recoverPassword() {
+    showLoading();
+    firebase.auth().sendPasswordResetEmail(form.email().value).then(() => {
+        hideLoading();
+        alert('Email enviado com sucesso');
+    }).catch(error => {
+        hideLoading();
+        alert(getErrorMessage(error));
+    });
+}
+
 function getErrorMessage(error) {
-    if (error.code == "auth/user-not-found") {
-        return "Usuário nao encontrado";
+    if (error.code == "auth/invalid-login-credentials") {  //auth/user-not-found  
+        return "Usuário não encontrado ou senha inválida";
     }
+  /*  if (error.code == "auth/invalid-password") { //auth/wrong-password
+        return "Senha inválida";
+    } */
     return error.message;
 }
+
+
 
 function register() {
     window.location.href = "pages/register/register.html";
